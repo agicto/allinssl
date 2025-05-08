@@ -105,23 +105,25 @@ func Save(setting *Setting) error {
 		public.TimeOut = setting.Timeout
 		restart = true
 	}
-	if setting.Https == "1" && setting.Https != public.GetSettingIgnoreError("https") {
-		if setting.Key == "" || setting.Cert == "" {
-			return fmt.Errorf("key or cert is empty")
-		}
-		// fmt.Println(setting.Key, setting.Cert)
-		err := public.ValidateSSLCertificate(setting.Cert, setting.Key)
-		if err != nil {
-			return err
+	if setting.Https != "" && setting.Https != public.GetSettingIgnoreError("https") {
+		if setting.Https == "1" {
+			if setting.Key == "" || setting.Cert == "" {
+				return fmt.Errorf("key or cert is empty")
+			}
+			// fmt.Println(setting.Key, setting.Cert)
+			err := public.ValidateSSLCertificate(setting.Cert, setting.Key)
+			if err != nil {
+				return err
+			}
+			// dir := filepath.Dir("data/https")
+			if err := os.MkdirAll("data/https", os.ModePerm); err != nil {
+				panic("创建目录失败: " + err.Error())
+			}
+			err = os.WriteFile("data/https/key.pem", []byte(setting.Key), 0644)
+			// fmt.Println(err)
+			os.WriteFile("data/https/cert.pem", []byte(setting.Cert), 0644)
 		}
 		s.Where("key = 'https'", []interface{}{}).Update(map[string]interface{}{"value": setting.Https})
-		// dir := filepath.Dir("data/https")
-		if err := os.MkdirAll("data/https", os.ModePerm); err != nil {
-			panic("创建目录失败: " + err.Error())
-		}
-		err = os.WriteFile("data/https/key.pem", []byte(setting.Key), 0644)
-		// fmt.Println(err)
-		os.WriteFile("data/https/cert.pem", []byte(setting.Cert), 0644)
 		restart = true
 	}
 	if restart {
