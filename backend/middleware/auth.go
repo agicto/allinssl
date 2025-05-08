@@ -28,12 +28,14 @@ func SessionAuthMiddleware() gin.HandlerFunc {
 		gob.Register(time.Time{})
 		last := session.Get("lastRequestTime")
 		
-		if routePath == public.Secure && session.Get("secure") == nil {
-			// 访问安全入口，设置 session
-			session.Set("secure", true)
-			session.Set("lastRequestTime", now)
-			// 一定要保存 session BEFORE redirect
-			session.Save()
+		if routePath == public.Secure {
+			if session.Get("secure") == nil {
+				// 访问安全入口，设置 session
+				session.Set("secure", true)
+				session.Set("lastRequestTime", now)
+				// 一定要保存 session BEFORE redirect
+				session.Save()
+			}
 			// 返回登录页
 			c.Redirect(http.StatusFound, "/login")
 			// c.Abort()
@@ -94,6 +96,11 @@ func SessionAuthMiddleware() gin.HandlerFunc {
 								// 访问正常，更新最后请求时间
 								session.Set("lastRequestTime", now)
 								session.Save()
+								if paths[0] == "login" {
+									c.Redirect(http.StatusFound, "/home")
+									c.Abort()
+									return
+								}
 							}
 						}
 					}
