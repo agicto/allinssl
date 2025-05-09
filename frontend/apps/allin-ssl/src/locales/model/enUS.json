@@ -1,6 +1,4 @@
 {
-  "t_0_1746773763967": "Are you sure you want to delete {0}, the notification channel?",
-  "t_1_1746773763643": "Let's Encrypt and other CAs automatically apply for free certificates",
   "t_0_1744098811152": "Warning: You have entered an unknown area, the page you are visiting does not exist, please click the button to return to the homepage.",
   "t_1_1744098801860": "Return Home",
   "t_2_1744098804908": "Safety Tip: If you think this is an error, please contact the administrator immediately",
@@ -463,7 +461,6 @@
   "t_21_1746773350759": "Test email",
   "t_22_1746773360711": "Send a test email to the currently configured mailbox, continue?",
   "t_23_1746773350040": "Delete Confirmation",
-  "t_24_1746773349367": "Confirm to delete",
   "t_25_1746773349596": "Please enter name",
   "t_26_1746773353409": "Please enter the correct SMTP port",
   "t_27_1746773352584": "Please enter user password",
@@ -486,5 +483,11 @@
   "t_44_1746773352805": "Automation task:",
   "t_45_1746773355717": "Support scheduled tasks, automatically renew certificates and deploy",
   "t_46_1746773350579": "Multi-platform support",
-  "t_47_1746773360760": "Supports DNS verification methods for multiple DNS providers (Alibaba Cloud, Tencent Cloud, etc.)"
+  "t_47_1746773360760": "Supports DNS verification methods for multiple DNS providers (Alibaba Cloud, Tencent Cloud, etc.)",
+  "t_0_1746773763967": "Are you sure you want to delete {0}, the notification channel?",
+  "t_1_1746773763643": "Let's Encrypt and other CAs automatically apply for free certificates",
+  "t_0_1746776194126": "Log Details",
+  "t_1_1746776198156": "Failed to load log:",
+  "t_2_1746776194263": "Download log",
+  "t_3_1746776195004": "No log information"
 }

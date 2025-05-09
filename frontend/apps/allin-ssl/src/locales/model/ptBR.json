@@ -1,6 +1,4 @@
 {
-  "t_0_1746773763967": "Tem certeza que deseja excluir {0}, o canal de notificação?",
-  "t_1_1746773763643": "Let's Encrypt e outras autoridades de certificação solicitam automaticamente certificados gratuitos",
   "t_0_1744098811152": "Aviso: Você entrou em uma área desconhecida, a página que você está visitando não existe, por favor, clique no botão para voltar para a página inicial.",
   "t_1_1744098801860": "Voltar para a homepage",
   "t_2_1744098804908": "Dica de Segurança: Se você acha que isso é um erro, entre em contato com o administrador imediatamente",
@@ -463,7 +461,6 @@
   "t_21_1746773350759": "E-mail de teste",
   "t_22_1746773360711": "Enviar um e-mail de teste para a caixa de correio configurada atualmente, continuar?",
   "t_23_1746773350040": "Confirmação de exclusão",
-  "t_24_1746773349367": "Confirmar exclusão",
   "t_25_1746773349596": "Por favor, insira o nome",
   "t_26_1746773353409": "Por favor, insira a porta SMTP correta",
   "t_27_1746773352584": "Por favor, insira a senha do usuário",
@@ -486,5 +483,11 @@
   "t_44_1746773352805": "Tarefa automatizada:",
   "t_45_1746773355717": "Suporta tarefas agendadas, renova automaticamente os certificados e implanta",
   "t_46_1746773350579": "Suporte multiplataforma",
-  "t_47_1746773360760": "Suporta métodos de verificação DNS para vários provedores de DNS (Alibaba Cloud, Tencent Cloud, etc.)"
+  "t_47_1746773360760": "Suporta métodos de verificação DNS para vários provedores de DNS (Alibaba Cloud, Tencent Cloud, etc.)",
+  "t_0_1746773763967": "Tem certeza que deseja excluir {0}, o canal de notificação?",
+  "t_1_1746773763643": "Let's Encrypt e outras autoridades de certificação solicitam automaticamente certificados gratuitos",
+  "t_0_1746776194126": "Detalhes do Log",
+  "t_1_1746776198156": "Falha ao carregar o log:",
+  "t_2_1746776194263": "Baixar registro",
+  "t_3_1746776195004": "Sem informações de log"
 }

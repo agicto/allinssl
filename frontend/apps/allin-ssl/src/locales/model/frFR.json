@@ -1,6 +1,4 @@
 {
-  "t_0_1746773763967": "Êtes-vous sûr de vouloir supprimer {0}, le canal de notification ?",
-  "t_1_1746773763643": "Let's Encrypt et d'autres CA demandent automatiquement des certificats gratuits",
   "t_0_1744098811152": "Avertissement : Vous avez entré dans une zone inconnue, la page que vous visitez n'existe pas, veuillez cliquer sur le bouton pour revenir à la page d'accueil.",
   "t_1_1744098801860": "Retour à l'accueil",
   "t_2_1744098804908": "Avis de sécurité : Si vous pensez que c'est une erreur, veuillez contacter l'administrateur immédiatement",
@@ -463,7 +461,6 @@
   "t_21_1746773350759": "E-mail de test",
   "t_22_1746773360711": "Envoyer un e-mail de test à la boîte mail configurée actuellement, continuer ?",
   "t_23_1746773350040": "Confirmation de suppression",
-  "t_24_1746773349367": "Confirmer la suppression",
   "t_25_1746773349596": "Veuillez entrer le nom",
   "t_26_1746773353409": "Veuillez saisir le bon port SMTP",
   "t_27_1746773352584": "Veuillez entrer le mot de passe utilisateur",
@@ -486,5 +483,11 @@
   "t_44_1746773352805": "Tâche automatisée :",
   "t_45_1746773355717": "Prend en charge les tâches planifiées, renouvellement automatique des certificats et déploiement",
   "t_46_1746773350579": "Prise en charge multiplateforme",
-  "t_47_1746773360760": "Prend en charge les méthodes de vérification DNS pour plusieurs fournisseurs DNS (Alibaba Cloud, Tencent Cloud, etc.)"
+  "t_47_1746773360760": "Prend en charge les méthodes de vérification DNS pour plusieurs fournisseurs DNS (Alibaba Cloud, Tencent Cloud, etc.)",
+  "t_0_1746773763967": "Êtes-vous sûr de vouloir supprimer {0}, le canal de notification ?",
+  "t_1_1746773763643": "Let's Encrypt et d'autres CA demandent automatiquement des certificats gratuits",
+  "t_0_1746776194126": "Détails du journal",
+  "t_1_1746776198156": "Échec du chargement du journal :",
+  "t_2_1746776194263": "Télécharger le journal",
+  "t_3_1746776195004": "Aucune information de journal"
 }

@@ -1,4 +1,5 @@
 import { NCard, NText, NSpin, NScrollbar, NButton, NSpace, NIcon } from 'naive-ui'
+import { $t } from '@locales/index'
 import { DownloadOutline } from '@vicons/ionicons5'
 
 export default defineComponent({
@@ -27,7 +28,7 @@ export default defineComponent({
 		// 标题
 		title: {
 			type: String,
-			default: '日志详情',
+			default: $t('t_0_1746776194126'),
 		},
 		// 获取日志方法
 		fetchLogs: {
@@ -77,11 +78,10 @@ export default defineComponent({
 			isLoading.value = true
 			try {
 				const result = await props.fetchLogs()
-				console.log('获取日志:', result)
 				logs.value = result
 				scrollToBottom()
 			} catch (error) {
-				console.error('加载日志失败:', error)
+				console.error($t('t_1_1746776198156'), error)
 			} finally {
 				isLoading.value = false
 			}
@@ -125,22 +125,22 @@ export default defineComponent({
 					<div class="mb-2.5 flex justify-start items-center">
 						<NSpace>
 							<NButton onClick={refreshLogs} size="small">
-								刷新
+								{$t('t_0_1746497662220')}
 							</NButton>
 							{props.enableDownload && (
 								<NButton onClick={downloadLogs} size="small">
 									<NIcon>
 										<DownloadOutline />
 									</NIcon>
-									<span>下载日志</span>
+									<span>{$t('t_2_1746776194263')}</span>
 								</NButton>
 							)}
 						</NSpace>
 					</div>
 					<div class="border border-gray-200 rounded bg-gray-50" ref={logContainerRef}>
 						<NScrollbar class="h-max-[500px]">
-							<NText class="block p-3 h-[500px] font-mono whitespace-pre-wrap break-all text-xs leading-normal">
-								{logs.value ? logs.value : '暂无日志信息'}
+							<NText class="block p-3 h-[500px] font-mono whitespace-pre-wrap break-all text-[1.2rem] leading-normal">
+								{logs.value ? logs.value : $t('t_3_1746776195004')}
 							</NText>
 						</NScrollbar>
 					</div>
