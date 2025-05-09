@@ -10,6 +10,7 @@ import DnsProviderSelect from '@/components/dnsProviderSelect'
 
 import styles from './index.module.css'
 import verifyRules from './verify'
+import { isArray } from '@baota/utils/type'
 
 type StepStatus = 'process' | 'wait' | 'finish' | 'error'
 
@@ -63,10 +64,7 @@ export default defineComponent({
 		// 表单参数
 		const param = ref(
 			Object.keys(props.node.config).length > 0
-				? {
-						...props.node.config,
-						inputs: Array.isArray(props.node.inputs) ? props.node.inputs[0] : { fromNodeId: '', name: '' },
-					}
+				? props.node.config
 				: {
 						provider: '',
 						provider_id: '',
@@ -151,18 +149,20 @@ export default defineComponent({
 		 * @returns
 		 */
 		const nextStep = async () => {
-			if (!param.value.provider) return message.error($t('t_19_1745735766810'))
+			if (!props.node.config.provider) return message.error($t('t_19_1745735766810'))
 
 			// 加载证书来源选项
 			certOptions.value = findApplyUploadNodesUp(props.node.id).map((item) => {
 				return { label: item.name, value: item.id }
 			})
+
 			if (!certOptions.value.length) {
 				message.warning($t('t_3_1745748298161'))
-			} else if (!(param.value.inputs && param.value.inputs.fromNodeId)) {
-				param.value.inputs = {} as DeployNodeInputsConfig
-				param.value.inputs.name = certOptions.value[0]?.label || ''
-				param.value.inputs.fromNodeId = certOptions.value[0]?.value || ''
+			} else if (!props.node.config.inputs?.fromNodeId) {
+				param.value.inputs = {
+					name: certOptions.value[0]?.label || '',
+					fromNodeId: certOptions.value[0]?.value || '',
+				} as DeployNodeInputsConfig
 			}
 			current.value++
 			next.value = false
@@ -195,15 +195,7 @@ export default defineComponent({
 				await example.value?.validate()
 				const tempData = param.value
 				const inputs = tempData.inputs
-				console.log(inputs, 'inputs', props.node)
-				updateNode(
-					props.node.id,
-					{
-						inputs: [inputs],
-						config: {},
-					},
-					false,
-				)
+				updateNode(props.node.id, { inputs: [inputs], config: {} }, false)
 				delete tempData.inputs
 				updateNodeConfig(props.node.id, {
 					...tempData,
@@ -221,7 +213,7 @@ export default defineComponent({
 			modalOptions.value.footer = false
 			// 如果已经选择了部署类型，则跳转到下一步
 			if (param.value.provider) {
-				if (props.node.inputs) param.value.inputs = props.node.inputs
+				if (props.node.inputs) param.value.inputs = props.node.inputs[0]
 				nextStep()
 			}
 		})

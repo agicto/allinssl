@@ -27,7 +27,7 @@
 /* Add triangle in bottom-right corner for selected item */
 .optionCardSelected::before {
 	content: '';
-	@apply absolute -bottom-[.1rem] -right-[.1rem] w-0 h-0 z-10 text-white text-xs flex items-center justify-center;
+	@apply absolute -bottom-[.1rem] -right-[.1rem] w-0 h-0 z-10 text-white text-[1.2rem] flex items-center justify-center;
 	border-style: solid;
 	border-width: 0 0 20px 20px;
 	border-color: transparent transparent var(--n-primary-color) transparent;

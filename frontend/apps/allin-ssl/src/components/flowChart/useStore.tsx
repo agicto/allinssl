@@ -304,7 +304,6 @@ export const useFlowStore = defineStore('flow-store', () => {
 			console.warn(`Node with id ${nodeId} not found`)
 			return
 		}
-		console.log(nodeId, node)
 
 		// 更新原始数据
 		updateNodeRecursive(flowData.value.childNode, nodeId, (node, parent) => {
@@ -312,20 +311,26 @@ export const useFlowStore = defineStore('flow-store', () => {
 				console.warn('Cannot remove root node')
 				return
 			}
+
 			const { type, conditionNodes } = parent as BranchNodeData | ExecuteResultBranchNodeData
 			// 处理条件节点(分支节点、执行结果分支节点)
 			// console.log(type, conditionNodes, node)
 
+			// 如果当前子节点存在条件节点，需要判断删除后是否支持条件节点，则需要更新 fromNodeId
+			if (node.childNode?.type === EXECUTE_RESULT_BRANCH && node.childNode?.config) {
+				node.childNode.config.fromNodeId = parent.id
+			}
+
+			// console.log(node.childNode, parent)
+
 			// 条件一：当前节点为普通节点
 			const nodeTypeList = [CONDITION, EXECUTE_RESULT_CONDITION, BRANCH, EXECUTE_RESULT_BRANCH]
 			if (!nodeTypeList.includes(node.type) && parent.childNode?.id === nodeId) {
-				console.log(deep)
 				// 处理普通节点
 				if (deep) {
 					// 深度删除，直接移除
 					parent.childNode = undefined
 				} else {
-					console.log(parent.childNode, node.childNode)
 					// 非深度删除，子节点上移
 					if (node.childNode) {
 						parent.childNode = node.childNode

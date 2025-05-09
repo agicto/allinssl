@@ -37,7 +37,7 @@ export default defineComponent({
 													<div class="flex items-center space-x-1">
 														<span class="w-4 h-4 rounded-full mr-[.6rem] bg-green-500"></span>
 														<span class={styles.tableText}>
-															{$t('t_0_1745457486299')}: {overviewData.value.workflow.active}
+															{$t('t_0_1746782379424')}: {overviewData.value.workflow.active}
 														</span>
 													</div>
 													<div class="flex items-center space-x-1 mt-3">
