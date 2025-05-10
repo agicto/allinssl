@@ -1,0 +1,38 @@
+{
+  "name": "@baota/plugin-project-sync-git",
+  "version": "1.0.0",
+  "description": "A Vite plugin to sync build files to a git repository",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "keywords": [
+    "vite",
+    "plugin",
+    "git",
+    "sync"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^8.2.5",
+    "simple-git": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^8.2.5",
+    "@types/node": "^20.8.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
+  },
+  "peerDependencies": {
+    "vite": "^4.0.0"
+  }
+}

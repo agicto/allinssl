@@ -1,0 +1,10 @@
+:root {
+	--n-sider-width: 22rem; /* 侧边栏宽度,已经弃用，naive sider props width 替代 */
+	--n-sider-login-height: var(--n-header-height); /* 侧边栏登录栏高度 */
+	--n-header-height: 5rem; /* 顶部栏高度 */
+	--n-footer-height: 4rem; /* 底部栏高度 */
+	--n-main-diff-height: calc(var(--n-header-height)); /* 顶部栏和底部栏高度之和 */
+	--n-content-margin: 1.2rem; /* 内容区内边距 */
+	--n-content-padding: 1.2rem; /* 内容区内边距 */
+	--n-dialog-title-padding: 0; /* 对话框标题内边距 */
+}
