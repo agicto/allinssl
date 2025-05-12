@@ -238,8 +238,8 @@ func Apply(cfg map[string]any, logger *public.Logger) (map[string]any, error) {
 			return true, nil
 		}),
 		dns01.AddRecursiveNameservers([]string{
-			"volans.dnspod.net:53",
-			"dove.dnspod.net:53",
+			"8.8.8.8:53",
+			"1.1.1.1:53",
 		}),
 	)
 	if err != nil {
