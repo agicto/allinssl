@@ -95,7 +95,7 @@ func Request1panel(data *map[string]any, method, providerID, requestUrl string) 
 		return nil, fmt.Errorf("证书部署失败")
 	}
 	if code != 200 {
-		msg, ok := res["msg"].(string)
+		msg, ok := res["message"].(string)
 		if !ok {
 			return nil, fmt.Errorf("证书部署失败")
 		}
@@ -184,7 +184,7 @@ func Deploy1panelSite(cfg map[string]any) error {
 	if !ok {
 		return fmt.Errorf("获取网站参数失败: data")
 	}
-	SSLProtocol, ok := siteData["SSLProtocol"].(string)
+	SSLProtocol, ok := siteData["SSLProtocol"].([]any)
 	if !ok {
 		return fmt.Errorf("获取网站参数失败: data.SSLProtocol")
 	}
@@ -216,10 +216,10 @@ func Deploy1panelSite(cfg map[string]any) error {
 		"enable":     enable,
 		"hsts":       hsts,
 		"httpConfig": httpConfig,
-		// "importType":      "paste",
-		"type":      "manual",
-		"websiteId": websiteId,
+		"importType": "paste",
+		"type":       "manual",
+		"websiteId":  websiteId,
 	}
 	_, err = Request1panel(&data, "POST", providerID, fmt.Sprintf("api/v1/websites/%s/https", siteId))
-	return nil
+	return err
 }
