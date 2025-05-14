@@ -107,6 +107,7 @@ func deploy(params map[string]any) (any, error) {
 		case string:
 			skip, _ = strconv.Atoi(v)
 		}
+		fmt.Println("xxxxxxxxxxxxxxxx", skip)
 		if skip == 1 {
 			if len(deployData) > 0 {
 				beSha256, ok := deployData[0]["cert_hash"].(string)
