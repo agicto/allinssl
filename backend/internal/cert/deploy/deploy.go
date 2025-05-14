@@ -17,6 +17,9 @@ func Deploy(cfg map[string]any, logger *public.Logger) error {
 	case "btpanel-site":
 		logger.Debug("部署到宝塔面板网站...")
 		return DeployBtSite(cfg)
+	case "btwaf-site":
+		logger.Debug("部署到宝塔WAF面板网站...")
+		return DeployBtWafSite(cfg)
 	case "tencentcloud-cdn":
 		cfg["resource_type"] = "cdn"
 		logger.Debug("部署到腾讯云CDN...")
