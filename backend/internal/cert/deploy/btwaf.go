@@ -87,13 +87,13 @@ func RequestBtWaf(data *map[string]any, method, providerID, requestUrl string) (
 	return res, nil
 }
 
-func GetBTWafSiteList(page int, pageSize int, siteName string) ([]any, error) {
+func GetBTWafSiteList(page int, pageSize int, siteName string, providerId string) ([]any, error) {
 	data := map[string]any{
 		"p":         page,
 		"p_size":    pageSize,
 		"site_name": siteName,
 	}
-	response, err := RequestBtWaf(&data, "POST", "1", "api/wafmastersite/get_site_list")
+	response, err := RequestBtWaf(&data, "POST", providerId, "api/wafmastersite/get_site_list")
 	res := response["res"].(map[string]any)
 	if err != nil {
 		return nil, err
@@ -102,7 +102,7 @@ func GetBTWafSiteList(page int, pageSize int, siteName string) ([]any, error) {
 	return res["list"].([]any), nil
 }
 
-//btwaf不支持通过API设置SSL
+// btwaf不支持通过API设置SSL
 func DeployBtWaf(cfg map[string]any) error {
 	cert, ok := cfg["certificate"].(map[string]any)
 	if !ok {
@@ -166,7 +166,7 @@ func DeployBtWafSite(cfg map[string]any) error {
 		return fmt.Errorf("参数错误：siteName")
 	}
 
-	sitelist, err := GetBTWafSiteList(1, 10, siteName)
+	sitelist, err := GetBTWafSiteList(1, 10, siteName, providerID)
 	if len(sitelist) == 0 || err != nil {
 		return fmt.Errorf("找不到网站：%s", siteName)
 	}

@@ -33,7 +33,7 @@ func TestBTWAFSite(t *testing.T) {
 //}
 
 func TestGetBTWAFSiteList(t *testing.T) {
-	res, err := GetBTWafSiteList(1, 10, "xxx.cn")
+	res, err := GetBTWafSiteList(1, 10, "xxx.cn", "1")
 	for _, site := range res {
 		sites := site.(map[string]any)
 		fmt.Printf("网站名: %s   ID：%s  \n", sites["site_name"], sites["site_id"])
