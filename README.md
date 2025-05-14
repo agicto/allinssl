@@ -1,4 +1,4 @@
-# AllinSSL - SSL证书全流程管理工具 🔒
+# All in SSL - SSL证书全流程管理工具 🔒
 
 [![GitHub License](https://img.shields.io/github/license/allinssl/allinssl)](https://github.com/allinssl/allinssl?tab=readme-ov-file#AGPL-3.0-1-ov-file)
 ![GitHub Stars](https://img.shields.io/github/stars/allinssl/allinssl?style=social)
