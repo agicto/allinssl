@@ -1,5 +1,5 @@
 import { defineComponent, PropType } from 'vue'
-import { NTag, NText } from 'naive-ui'
+import { NTag } from 'naive-ui'
 import SvgIcon from '../svgIcon/index' // 注意修改引入路径以匹配实际位置
 
 // 定义支持的访问类型
@@ -12,6 +12,7 @@ const types = {
 	baidu: '百度云',
 	btpanel: '宝塔面板',
 	btwaf: '宝塔WAF',
+	safeline: '雷池WAF',
 	'1panel': '1Panel',
 	cloudflare: 'Cloudflare',
 	mail: '邮件',
@@ -80,6 +81,7 @@ export const AuthApiTypeIcon = defineComponent({
 				'1panel-site': '1panel',
 				'btpanel-site': 'btpanel',
 				baidu: 'baidu',
+				safeline: 'safeline',
 			}
 
 			// 返回匹配的图标路径或默认图标

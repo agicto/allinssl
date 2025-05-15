@@ -63,6 +63,7 @@ export const useLayoutStore = defineStore('layout-store', () => {
 		huaweicloud: { name: '华为云', access: ['dns'] },
 		cloudflare: { name: 'Cloudflare', access: ['dns'] },
 		baidu: { name: '百度云', access: ['dns'] },
+		safeline: { name: '雷池WAF', access: ['host'] },
 	})
 
 	/**

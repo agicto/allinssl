@@ -227,7 +227,9 @@ export interface DeployConfig<
 		| 'tencentcloud-cdn'
 		| 'tencentcloud-cos'
 		| 'aliyun-cdn'
-		| 'aliyun-oss',
+		| 'aliyun-oss'
+		| 'safeline-site'
+		| 'safeline-panel',
 > {
 	provider: T
 	provider_id: string
@@ -246,16 +248,22 @@ export interface DeploySSHConfig {
 }
 
 // 部署本地节点配置
-export interface DeployLocalConfig extends DeploySSHConfig {}
+export interface DeployLocalConfig extends DeploySSHConfig {
+	[key: string]: unknown
+}
 
 // 部署节点配置（宝塔面板）
-export interface DeployBTPanelConfig {
+export interface DeployBTPanelSiteConfig {
 	siteName: string
 }
 
 // 部署节点配置（1Panel）
 export interface Deploy1PanelConfig {
 	site_id: string
+}
+// 部署节点配置（1Panel站点）
+export interface Deploy1PanelSiteConfig extends Deploy1PanelConfig {
+	[key: string]: unknown
 }
 
 // 部署腾讯云CDN/阿里云CDN
@@ -270,9 +278,28 @@ export interface DeployStorageConfig {
 	bucket: string
 }
 
+// 部署节点配置（雷池WAF）
+export interface DeploySafelineConfig {
+	[key: string]: unknown
+}
+
+// 部署节点配置（雷池WAF站点）
+export interface DeploySafelineSiteConfig extends DeployBTPanelSiteConfig {
+	[key: string]: unknown
+}
+
 // 部署节点配置
 export type DeployNodeConfig = DeployConfig<
-	DeploySSHConfig | DeployLocalConfig | DeployBTPanelConfig | Deploy1PanelConfig | DeployCDNConfig | DeployStorageConfig
+	| DeploySSHConfig // 部署节点配置（ssh）
+	| DeployLocalConfig // 部署节点配置（本地）
+	| DeployBTPanelConfig // 部署节点配置（宝塔面板）
+	| DeployBTPanelSiteConfig // 部署节点配置（宝塔面板站点）
+	| Deploy1PanelConfig // 部署节点配置（1Panel）
+	| Deploy1PanelSiteConfig // 部署节点配置（1Panel站点）
+	| DeployCDNConfig // 部署节点配置（腾讯云CDN/阿里云CDN）
+	| DeployStorageConfig // 部署节点配置（腾讯云COS/阿里云OSS）
+	| DeploySafelineConfig // 部署节点配置（雷池WAF）
+	| DeploySafelineSiteConfig // 部署节点配置（雷池WAF站点）
 >
 
 // 部署节点输入配置

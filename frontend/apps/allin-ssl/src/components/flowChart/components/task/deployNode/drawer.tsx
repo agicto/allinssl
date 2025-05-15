@@ -77,6 +77,8 @@ export default defineComponent({
 			{ label: $t('t_15_1745735768976'), value: 'tencentcloud-cos', category: 'tencentcloud', icon: 'tencentcloud' },
 			{ label: $t('t_16_1745735766712'), value: 'aliyun-cdn', category: 'aliyun', icon: 'aliyun' },
 			{ label: $t('t_2_1746697487164'), value: 'aliyun-oss', category: 'aliyun', icon: 'aliyun' },
+			{ label: $t('雷池WAF站点'), value: 'safeline-site', category: 'safeline', icon: 'safeline' },
+			{ label: $t('雷池WAF'), value: 'safeline-panel', category: 'safeline', icon: 'safeline' },
 		]
 		const certOptions = ref<{ label: string; value: string }[]>([]) // 证书选项
 		const current = ref(1) // 当前步骤
@@ -173,10 +175,11 @@ export default defineComponent({
 					break
 				case 'btwaf-site':
 				case 'btpanel-site':
+				case 'safeline-site':
 					config.push(
 						...[
-							useFormInput($t('网站名'), 'siteName', {
-								placeholder: $t('请输入网址名'),
+							useFormInput($t('t_0_1747296173751'), 'siteName', {
+								placeholder: $t('t_1_1747296175494'),
 								onInput: (val: string) => (param.value.siteName = val.trim()),
 							}),
 						],
@@ -355,6 +358,7 @@ export default defineComponent({
 								<NTabPane name="1panel" tab={$t('t_9_1747271284765')} />
 								<NTabPane name="tencentcloud" tab={$t('t_3_1747019616129')} />
 								<NTabPane name="aliyun" tab={$t('t_2_1747019616224')} />
+								<NTabPane name="safeline" tab={$t('雷池WAF')} />
 							</NTabs>
 						</div>
 						<div class={styles.rightPanel}>

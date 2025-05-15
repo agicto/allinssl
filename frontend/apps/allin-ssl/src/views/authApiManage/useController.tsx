@@ -368,6 +368,13 @@ export const useApiFormController = (props: { data: AccessItem }) => {
 		access: value.access,
 	}))
 
+	const typeUrlMap = new Map<string, string>([
+		['btwaf', '宝塔WAF-URL'],
+		['btpanel', '宝塔面板-URL'],
+		['1panel', '1Panel-URL'],
+		['safeline', '雷池WAF-URL'],
+	])
+
 	// 表单配置
 	const config = computed(() => {
 		const items: FormConfig = [
@@ -425,8 +432,9 @@ export const useApiFormController = (props: { data: AccessItem }) => {
 			case '1panel':
 			case 'btpanel':
 			case 'btwaf':
+			case 'safeline':
 				items.push(
-					useFormInput(param.value.type === 'btwaf' ? $t('t_5_1747271291828') : $t('t_2_1746667592840'), 'config.url'),
+					useFormInput(typeUrlMap.get(param.value.type) || '', 'config.url'),
 					useFormInput($t('t_55_1745289355715'), 'config.api_key'),
 					useFormSwitch(
 						$t('t_3_1746667592270'),
@@ -439,7 +447,6 @@ export const useApiFormController = (props: { data: AccessItem }) => {
 					),
 				)
 				break
-
 			case 'aliyun':
 				items.push(
 					useFormInput('AccessKeyId', 'config.access_key'),
