@@ -2,8 +2,7 @@ FROM frolvlad/alpine-glibc
 
 WORKDIR /www/allinssl/
 
-RUN set -eux && sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
-    && apk add --no-cache curl \
+RUN apk add --no-cache curl \
     && curl https://download.allinssl.com/bin/allinssl-$(uname -s)-$(uname -m).tar.gz | tar -xz -C /www/allinssl/ \
     && apk del curl
 
