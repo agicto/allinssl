@@ -135,7 +135,12 @@ func Apply(cfg map[string]any, logger *public.Logger) (map[string]any, error) {
 
 	var skipCheck bool
 	if cfg["skip_check"] == nil {
+		// 默认跳过预检查
 		skipCheck = true
+		// cf 默认不跳过预检查
+		if providerStr == "cloudflare" {
+			skipCheck = false
+		}
 	} else {
 		switch v := cfg["skip_check"].(type) {
 		case int:
